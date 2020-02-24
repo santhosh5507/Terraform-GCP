@@ -44,7 +44,12 @@ steps:
   args: 
   - '-c'
   - | 
-     
-     terraform apply -auto-approve
+          cd scripts  
+          env=${scripts}
+          echo ""
+          echo "*************** TERRAFOM APPLY ******************"
+          echo "******* Present directory: ${env} ********"
+          echo "*************************************************"
+          terraform apply -auto-approve
       
 # [END tf-apply]      
