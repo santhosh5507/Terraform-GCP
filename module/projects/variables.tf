@@ -1,13 +1,3 @@
-variable "folder1-id" {
-  type        = string
-  description = "id of the folder"
-}
-
-variable "folder2-id" {
-  type        = string
-  description = "id of the folder"
-}
-
 variable "host-project-name" {
   type        = string
   description = "name of the host project"
@@ -18,7 +8,18 @@ variable "host-project-name" {
   description = "id of the host project"
 }
 
-  variable "service-project1-name" {
+/*
+variable "folder1-id" {
+  type        = string
+  description = "id of the folder"
+}
+
+variable "folder2-id" {
+  type        = string
+  description = "id of the folder"
+}
+
+variable "service-project1-name" {
   type        = string
   description = "name of the service project1"
 }
@@ -67,3 +68,4 @@ variable "monitoring-project-name" {
   type        = string
   description = "id of the monitoring project"
 }
+*/
