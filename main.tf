@@ -6,11 +6,11 @@ provider "google" {
 module "project" {
   source = "./modules/projects"
 
-  folder1-id = "shared-services12345" # provide folder1 id
+  # folder1-id = "shared-services12345" # provide folder1 id
 
   host-project-name = "regen-svpc-host"
   host-project-id = "regen-svpc-host12345"
-
+/*
   service-project1-name = "image-project"
   service-project1-id = "image-project12345"
 
@@ -27,5 +27,5 @@ module "project" {
 
   monitoring-project-name = "std-monitoring-project"
   monitoring-project-id = "std-monitoring-project12345"
-  
+*/ 
 }
