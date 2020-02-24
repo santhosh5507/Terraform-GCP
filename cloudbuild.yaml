@@ -14,21 +14,20 @@ steps:
   args: 
   - '-c'
   - |
-      if [ -d "./$BRANCH_NAME/" ]; then
-        cd ./$BRANCH_NAME
+      if [ -d "scripts/$BRANCH_NAME/" ]; then
+        cd scripts/$BRANCH_NAME
         terraform init
       else
-        for dir in ./*/
+        for dir in scripts/*/
         do 
           cd ${dir}   
           env=${dir%*/}
-          env=${projects/}
           echo ""
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At Branch: ${env} ********"
           echo "*************************************************"
           terraform init || exit 1
-          cd ../../
+          cd ../
         done
       fi 
 # [START tf-plan]
@@ -38,21 +37,20 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "$BRANCH_NAME/" ]; then
-        cd $BRANCH_NAME
+      if [ -d "scripts/$BRANCH_NAME/" ]; then
+        cd scripts/$BRANCH_NAME
         terraform plan
       else
-        for dir in ./*/
+        for dir in scripts/*/
         do 
           cd ${dir}   
           env=${dir%*/}
-          env=${projects/}  
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At branch: ${env} ********"
           echo "*************************************************"
           terraform plan || exit 1
-          cd ../../
+          cd ../
         done
       fi 
 # [END tf-plan]
@@ -64,8 +62,8 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "$BRANCH_NAME/" ]; then
-        cd $BRANCH_NAME/      
+      if [ -d "scripts/$BRANCH_NAME/" ]; then
+        cd scripts/$BRANCH_NAME/      
         terraform apply -auto-approve
       else
         echo "***************************** SKIPPING APPLYING *******************************"
