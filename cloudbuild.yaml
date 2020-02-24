@@ -15,7 +15,7 @@ steps:
   - '-c'
   - |
       if [ -d "./$BRANCH_NAME/" ]; then
-        cd terraform-gcp/$BRANCH_NAME
+        cd ./$BRANCH_NAME
         terraform init
       else
         for dir in terraform-gcp/*/
@@ -38,8 +38,8 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "terraform-gcp/$BRANCH_NAME/" ]; then
-        cd terraform-gcp/$BRANCH_NAME
+      if [ -d "./$BRANCH_NAME/" ]; then
+        cd ./$BRANCH_NAME
         terraform plan
       else
         for dir in environments/*/
@@ -64,8 +64,8 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "terraform-gcp/$BRANCH_NAME/" ]; then
-        cd terraform-gcp/$BRANCH_NAME      
+      if [ -d "./$BRANCH_NAME/" ]; then
+        cd ./$BRANCH_NAME      
         terraform apply -auto-approve
       else
         echo "***************************** SKIPPING APPLYING *******************************"
