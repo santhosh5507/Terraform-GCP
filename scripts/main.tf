@@ -4,7 +4,7 @@ provider "google" {
 }
 
 module "project" {
-  source = "./module/projects"
+  source = "../module/projects"
 
   # folder1-id = "shared-services12345" # provide folder1 id
 
