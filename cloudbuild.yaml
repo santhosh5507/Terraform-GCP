@@ -14,22 +14,13 @@ steps:
   args: 
   - '-c'
   - |
-      if [ -d "scripts/$BRANCH_NAME/" ]; then
-        cd scripts/$BRANCH_NAME
-        terraform init
-      else
-        for dir in scripts/*/
-        do 
-          cd ${dir}   
-          env=${dir%*/}
+          cd scripts  
+          env=${scripts/}
           echo ""
           echo "*************** TERRAFORM INIT ******************"
-          echo "******* At Branch: ${env} ********"
+          echo "******* Present directory: ${env} ********"
           echo "*************************************************"
-          terraform init || exit 1
-          cd ../
-        done
-      fi 
+          terraform init 
 # [START tf-plan]
 - id: 'tf plan'
   name: 'hashicorp/terraform:0.12.20'
@@ -37,22 +28,13 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "scripts/$BRANCH_NAME/" ]; then
-        cd scripts/$BRANCH_NAME
-        terraform plan
-      else
-        for dir in scripts/*/
-        do 
-          cd ${dir}   
-          env=${dir%*/}
+          cd scripts  
+          env=${scripts}
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
-          echo "******* At branch: ${env} ********"
+          echo "******* Present directory: ${env} ********"
           echo "*************************************************"
-          terraform plan || exit 1
-          cd ../
-        done
-      fi 
+          terraform plan 
 # [END tf-plan]
 
 # [START tf-apply]
@@ -62,12 +44,7 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "scripts/$BRANCH_NAME/" ]; then
-        cd scripts/$BRANCH_NAME/      
-        terraform apply -auto-approve
-      else
-        echo "***************************** SKIPPING APPLYING *******************************"
-        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
-        echo "*******************************************************************************"
-      fi
+     
+     terraform apply -auto-approve
+      
 # [END tf-apply]      
